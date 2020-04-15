@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { deletePost } from './actions/postActions';
+
 class Post extends Component {
   handleClick = () => {
     this.props.deletePost(this.props.post.id);
@@ -25,10 +27,11 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+// 2. store에 저장된 값을 조작하기 위한 함수
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     deletePost: (id) => {
-      dispatch({ type: 'DELETE_POST', id: id });
+      dispatch(deletePost(id));
     },
   };
 };
